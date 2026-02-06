@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  padding: 120px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.hero p {
+  color: #aaa;
+}
+<section class="hero">
+  <h1 class="eesa-text">EESA</h1>
+
+  <img 
+    src="assets/images/eesa-logo.png" 
+    alt="EESA Logo"
+    class="eesa-logo"
+  >
+
+  <p>Electrical Engineering Students’ Association</p>
+</section>
+
+
+/* SOCIAL BAR */
+.social-bar {
+  position: fixed;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-bar a {
+  width: 40px;
+  height: 40px;
+  background: #111;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MENU BUTTON */
+.menu-btn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  width: 24px;
+  height: 3px;
+  background: white;
+  margin: 4px 0; 
+}
+.menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu-btn span {
+  transition: 0.4s;
+}
+
+
+/* SIDE MENU */
+.side-menu {
+  position: fixed;
+  right: -250px;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background: #000;
+  padding-top: 100px;
+  transition: 0.3s;
+}
+
+.side-menu a {
+  display: block;
+  padding: 15px 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+/* SCROLL SECTION */
+.reveal {
+  padding: 120px;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: 1s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  z-index: 999;
+}
+
+#overlay.show {
+  display: block;
+}
+.reveal h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.reveal p {
+  max-width: 800px;
+  line-height: 1.8;
+  color: #ccc;
+}
+@media (max-width: 768px) {
+
+  .social-bar {
+    display: none;
+  }
+
+  .hero {
+    padding: 80px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .reveal {
+    padding: 80px 30px;
+    transform: translateX(-60px);
+  }
+
+  .side-menu {
+    width: 100%;
+  }
+}
+@keyframes slideInFromLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+body.loaded .eesa-text {
+  animation: slideInFromLeft 1.2s ease-out forwards;
+}
+
+body.loaded .eesa-logo {
+  animation: slideInFromRight 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+}
